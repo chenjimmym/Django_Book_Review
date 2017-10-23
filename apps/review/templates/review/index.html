@@ -11,20 +11,23 @@
     body {
         background-image: url("https://cdn.wallpapersafari.com/58/91/HKCUGB.jpg");
     }
+    #flash {
+        text-align: center;
+    }
 </style>
 
 <body>
     <div class="container">
         <h1 style="text-align: center">Welcome to the book review!</h1>
         <br>
+        {% for message in messages %}
+        <p id="flash">{{ message }}</p>
+        {% endfor %}
         <br>
         <div class="row">
             <div class="col-md-1"></div>
             <div class="col-md-5 panel panel-info">
                 <h2>Register</h2>
-                {% for message in messages %}
-                <p>{{ message }}</p>
-                {% endfor %}
                 <form action="add_user" method="post">
                     {% csrf_token %} Name:
                     <input type="text" name="name">
@@ -47,7 +50,8 @@
             <div class="col-md-5 panel panel-success">
                 <h2>Login</h2>
                 <form action="login" method="post">
-                    {% csrf_token %} Email:
+                    {% csrf_token %}
+                    Email:
                     <input type="text" name="email">
                     <br> Password:
                     <input type="password" name="password">
