@@ -26,7 +26,7 @@
                 <br><h3>Reviews</h3>
                 {% for data in reviews %}
                     <p>{{data.rating}}</p>
-                    <p>{{data.name}} says: {{data.message}}</p>
+                    <p>{{data.reviewed_by.name}} says: {{data.message}}</p>
                     <p>Posted on {{data.created_at}}</p>
                     <br>
                 {% endfor %}

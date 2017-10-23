@@ -12,9 +12,11 @@
     <div class="container">
         <div class="row">
             <div class="col-md-6">
+                <p>Logged in as: {{request.session.login_status.name}}</p>
                 <h2>Welcome</h2>
             </div>
             <div class="col-md-6">
+                <br><br>
                 <a href="add">Add Book and Review</a>
                 <a href="logout">Logout</a>
             </div>
@@ -24,10 +26,11 @@
                 <br>
                 <h3>Recent Book Reviews:</h3><br>
                 {% for review in recent_reviews %}
-                    <p>{{review.belong_to.title}}</p>
-                    <p>{{review.rating}}</p>
-                    <p>{{review.reviewed_by.name}} says: {{review.message}}</p>
-                    <p>{{review.updated_at}}</p>
+                    <a href="/book/{{review.belong_to.id}}"><h4>{{review.belong_to.title}}</h4></a>
+                    <p>Rating: {{review.rating}}</p>
+                    <p><a href="/user/{{review.reviewed_by.id}}">{{review.reviewed_by.name}}</a> says: {{review.message}}</p>
+                    <p>Posted on: {{review.updated_at}}</p>
+                    <br>
                 {% endfor %}
                 
             </div>

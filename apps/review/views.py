@@ -74,10 +74,10 @@ def add_book(request):
 def book_detail(request, book_id):
     title = Book.objects.get(id=book_id).title
     author = Book.objects.get(id=book_id).author
-    # reviews = Book_Review.objects.filter(belong_to_id=book_id)
-    query = "SELECT * FROM review_user JOIN review_book ON review_user.id = uploaded_user_id JOIN review_book_review ON belong_to_id = review_book.id WHERE belong_to_id =" + book_id
-    reviews = Book.objects.raw(query)
-    print reviews[0].name
+    reviews = Book_Review.objects.filter(belong_to_id=book_id)
+    # query = "SELECT * FROM review_user JOIN review_book ON review_user.id = uploaded_user_id JOIN review_book_review ON belong_to_id = review_book.id WHERE belong_to_id =" + book_id
+    # reviews = Book.objects.raw(query)
+    # print reviews[0].name
     context = {
         'title':title,
         'author':author,
@@ -85,6 +85,16 @@ def book_detail(request, book_id):
         'book_id':book_id
     }
     return render(request, 'review/book_detail.html', context)
+
+def user_detail(request, user_id):
+    user_info = User.objects.get(id=user_id)
+    user_reviews = User.objects.get(id=user_id).reviews.all()
+    print user_reviews
+    context = {
+        'user_info': user_info,
+        'user_reviews': user_reviews
+    }
+    return render(request, 'review/user_detail.html', context)
 
 def add_review(request):
     if request.method == 'POST':
