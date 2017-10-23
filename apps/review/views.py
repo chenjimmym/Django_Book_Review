@@ -25,15 +25,11 @@ def login(request):
     if request.method == 'POST':
         if not 'login_status' in request.session:
             request.session['login_status'] = False
-        # login_data = User.objects.filter(email=request.POST['email']).filter(password=request.POST['password'])
         login_data = User.objects.filter(email=request.POST['email'])
         inputted_password = request.POST['password']
-        print inputted_password
         stored_password = User.objects.filter(email=request.POST['email']).first().password
-        print stored_password
         if login_data and bcrypt.checkpw(inputted_password.encode(), stored_password.encode()):
             request.session['login_status'] = {'id':login_data.first().id, 'name':login_data.first().name, 'alias':login_data.first().alias, 'email':login_data.first().email}
-            print "Login Status", request.session['login_status']
             return redirect('/books')
         else:
             messages.error(request, "Email and password does not match")

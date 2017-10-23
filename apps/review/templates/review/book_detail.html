@@ -32,7 +32,7 @@
                 <h3>Reviews</h3>
                 {% for data in reviews %}
                 <p>Rating: {{data.rating}}</p>
-                <p>{{data.reviewed_by.name}} says: {{data.message}}</p>
+                <p><a href="/user/{{data.reviewed_by.id}}">{{data.reviewed_by.name}}</a> says: {{data.message}}</p>
                 <p>Posted on {{data.created_at}}</p>
                 {% if data.reviewed_by.id == request.session.login_status.id %}
                 <form action="/delete_review" method="post">
