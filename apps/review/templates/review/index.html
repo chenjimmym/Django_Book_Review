@@ -1,48 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <title>Welcome</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    </head>
-    <body>
-        <div class="container">
-            <h1>Welcome to the book review!</h1>
-        </div>
+
+<head>
+    <title>Welcome</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Welcome to the book review!</h1>
         <div class="row">
             <div class="col-md-6">
                 <h2>Register</h2>
                 {% for message in messages %}
-                    <p>{{ message }}</p>
+                <p>{{ message }}</p>
                 {% endfor %}
                 <form action="add_user" method="post">
-                    {% csrf_token %}
-                    Name:
-                    <input type="text" name="name"><br>
-                    Alis:
-                    <input type="text" name="alias"><br>
-                    Email:
-                    <input type="text" name="email"><br>
-                    Password:
-                    <input type="password" name="password"><br>
+                    {% csrf_token %} Name:
+                    <input type="text" name="name">
+                    <br> Alis:
+                    <input type="text" name="alias">
+                    <br> Email:
+                    <input type="text" name="email">
+                    <br> Password:
+                    <input type="password" name="password">
+                    <br>
                     <p>Password must be at least 8 characters long.</p>
                     Confirm Password:
-                    <input type="password" name="confirm_password"><br>
+                    <input type="password" name="confirm_password">
+                    <br>
                     <input type="submit" value="Register">
                 </form>
             </div>
             <div class="col-md-6">
                 <h2>Login</h2>
                 <form action="login" method="post">
-                    {% csrf_token %}
-                    Email:
-                    <input type="text" name="email"><br>
-                    Password:
-                    <input type="password" name="password"><br>
+                    {% csrf_token %} Email:
+                    <input type="text" name="email">
+                    <br> Password:
+                    <input type="password" name="password">
+                    <br>
                     <input type="submit" value="Login">
                 </form>
             </div>
         </div>
-    </body>
+    </div>
+</body>
+
 </html>

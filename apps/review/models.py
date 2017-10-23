@@ -54,8 +54,8 @@ class Book(models.Model):
 class Book_Review(models.Model):
     message = models.TextField()
     rating = models.IntegerField()
-    belong_to = models.ForeignKey(User, related_name="book_reviews")
-    reviewed_by = models.ManyToManyField(User, related_name="reviews")
+    belong_to = models.ForeignKey(Book, related_name="book_reviews")
+    reviewed_by = models.ForeignKey(User, related_name="reviews")
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     def __repr__(self):
