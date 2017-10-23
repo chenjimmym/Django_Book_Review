@@ -7,6 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
+<style>
+    body {
+        background-image: url("https://cdn.wallpapersafari.com/58/91/HKCUGB.jpg");
+    }
+</style>
 
 <body>
     <div class="container">
@@ -23,28 +28,29 @@
             <div class="col-md-6">
                 <h2>{{title}}</h2>
                 <h3>Author: {{author}}</h3>
-                <br><h3>Reviews</h3>
+                <br>
+                <h3>Reviews</h3>
                 {% for data in reviews %}
-                    <p>Rating: {{data.rating}}</p>
-                    <p>{{data.reviewed_by.name}} says: {{data.message}}</p>
-                    <p>Posted on {{data.created_at}}</p>
-                    {% if data.reviewed_by.id == request.session.login_status.id %}
-                        <form action="/delete_review" method="post">
-                            {% csrf_token %}
-                            <input type="hidden" name="review_id" value="{{data.id}}">
-                            <input type="hidden" name="book_id" value="{{book_id}}">
-                            <input type="submit" value="Delete this Review">
-                        </form>
-                    {% endif %}
-                    <br>
-                {% endfor %}
+                <p>Rating: {{data.rating}}</p>
+                <p>{{data.reviewed_by.name}} says: {{data.message}}</p>
+                <p>Posted on {{data.created_at}}</p>
+                {% if data.reviewed_by.id == request.session.login_status.id %}
+                <form action="/delete_review" method="post">
+                    {% csrf_token %}
+                    <input type="hidden" name="review_id" value="{{data.id}}">
+                    <input type="hidden" name="book_id" value="{{book_id}}">
+                    <input type="submit" value="Delete this Review">
+                </form>
+                {% endif %}
+                <br> {% endfor %}
             </div>
             <div class="col-md-6">
                 <h3>Add a Review:</h3>
                 <form action="/add_review" method="post">
                     {% csrf_token %}
                     <textarea name="message"></textarea>
-                    <br><br>Rating:
+                    <br>
+                    <br>Rating:
                     <select name="rating">
                         <option value="1">1</option>
                         <option value="2">2</option>
@@ -54,7 +60,9 @@
                     </select>
                     stars.
                     <input type="hidden" name="book_id" value="{{book_id}}">
-                    <br><br><input type="submit" value="Submit Review"> 
+                    <br>
+                    <br>
+                    <input type="submit" value="Submit Review">
                 </form>
             </div>
         </div>

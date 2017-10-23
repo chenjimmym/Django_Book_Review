@@ -7,14 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
-
+<style>
+        body {
+            background-image: url("https://cdn.wallpapersafari.com/58/91/HKCUGB.jpg");
+        }
+</style>
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-5">
                 <p>Logged in as: {{request.session.login_status.name}}</p>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-2">
                 <a href="/books">Home</a>
                 <a href="/logout">Logout</a>
             </div>
@@ -22,7 +26,8 @@
         <div class="row">
             <h3>User Alias: {{user_info.alias}}</h3>
             <p>Name: {{user_info.name}}</p>
-            <p>Name: {{user_info.email}}</p>
+            <p>Email: {{user_info.email}}</p>
+            <p>Total reviews: {{review_count}}</p>
             <br>
             <h4>Posted reviews on the following books:</h4>
             {% for review in user_reviews %}

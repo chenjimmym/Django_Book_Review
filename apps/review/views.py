@@ -89,10 +89,12 @@ def book_detail(request, book_id):
 def user_detail(request, user_id):
     user_info = User.objects.get(id=user_id)
     user_reviews = User.objects.get(id=user_id).reviews.all()
+    review_count = len(user_reviews)
     print user_reviews
     context = {
         'user_info': user_info,
-        'user_reviews': user_reviews
+        'user_reviews': user_reviews,
+        'review_count': review_count
     }
     return render(request, 'review/user_detail.html', context)
 
