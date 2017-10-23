@@ -101,3 +101,10 @@ def add_review(request):
         Book_Review.objects.create(message=request.POST['message'], rating=request.POST['rating'], belong_to_id=request.POST['book_id'], reviewed_by_id=request.session['login_status']['id'])
     url = '/book/' + request.POST['book_id']
     return redirect(url)
+
+def delete_review(request):
+    print request.POST['book_id']
+    print request.POST['review_id']
+    Book_Review.objects.get(id=request.POST['review_id']).delete()
+    url = '/book/' + request.POST['book_id']
+    return redirect(url)

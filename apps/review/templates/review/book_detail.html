@@ -25,9 +25,17 @@
                 <h3>Author: {{author}}</h3>
                 <br><h3>Reviews</h3>
                 {% for data in reviews %}
-                    <p>{{data.rating}}</p>
+                    <p>Rating: {{data.rating}}</p>
                     <p>{{data.reviewed_by.name}} says: {{data.message}}</p>
                     <p>Posted on {{data.created_at}}</p>
+                    {% if data.reviewed_by.id == request.session.login_status.id %}
+                        <form action="/delete_review" method="post">
+                            {% csrf_token %}
+                            <input type="hidden" name="review_id" value="{{data.id}}">
+                            <input type="hidden" name="book_id" value="{{book_id}}">
+                            <input type="submit" value="Delete this Review">
+                        </form>
+                    {% endif %}
                     <br>
                 {% endfor %}
             </div>

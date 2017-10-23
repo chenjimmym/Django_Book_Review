@@ -10,6 +10,7 @@ urlpatterns = [
     url(r'^add$', views.add),
     url(r'^add_book$', views.add_book),
     url(r'^add_review$', views.add_review),
+    url(r'^delete_review$', views.delete_review),
     url(r'^book/(?P<book_id>\d+)$', views.book_detail),
     url(r'^user/(?P<user_id>\d+)$', views.user_detail),
 ]
