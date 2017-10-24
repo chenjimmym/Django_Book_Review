@@ -4,7 +4,7 @@ from django.contrib import messages
 import bcrypt
 # Create your views here.
 def index(request):
-    # Book.objects.all().delete
+    # User.objects.all().delete()
     return render(request, 'review/index.html')
 
 def add_user(request):

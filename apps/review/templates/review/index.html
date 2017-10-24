@@ -9,8 +9,13 @@
 </head>
 <style>
     body {
-        background-image: url("https://cdn.wallpapersafari.com/58/91/HKCUGB.jpg");
+        background: repeating-linear-gradient( -45deg,
+        #ffe77b,
+        #f3d982 2px,
+        #fff098 2px,
+        #f8e16b 4px);
     }
+
     #flash {
         text-align: center;
     }
@@ -19,8 +24,7 @@
 <body>
     <div class="container">
         <h1 style="text-align: center">Welcome to the book review!</h1>
-        <br>
-        {% for message in messages %}
+        <br> {% for message in messages %}
         <p id="flash">{{ message }}</p>
         {% endfor %}
         <br>
@@ -50,8 +54,7 @@
             <div class="col-md-5 panel panel-success">
                 <h2>Login</h2>
                 <form action="login" method="post">
-                    {% csrf_token %}
-                    Email:
+                    {% csrf_token %} Email:
                     <input type="text" name="email">
                     <br> Password:
                     <input type="password" name="password">
@@ -61,6 +64,7 @@
                 <br>
             </div>
         </div>
+        <p style="text-align: center">A simple project build by Jimmy Chen using Python and Django with SQLite</p>
     </div>
 </body>
 
