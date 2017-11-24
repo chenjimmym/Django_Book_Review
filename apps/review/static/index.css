@@ -1,0 +1,30 @@
+body {
+    background: repeating-linear-gradient( -45deg,
+    #ffe77b,
+    #f3d982 2px,
+    #fff098 2px,
+    #f8e16b 4px);
+}
+
+#flash {
+    text-align: center;
+}
+
+.registration {
+    display: none;
+    text-align: center;
+}
+
+.login {
+    text-align: center;
+}
+
+#login, #register {
+    color: rgb(0, 0, 170);
+    font-size: 18px;
+}
+
+label{
+    display:inline-block;
+    width:100px;
+}

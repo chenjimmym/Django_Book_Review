@@ -6,20 +6,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    
+    {% load static %}
+    <link rel="stylesheet" href="{% static "index.css" %}">
+    <script type="text/javascript" src="{% static "index.js" %}"></script>
 </head>
-<style>
-    body {
-        background: repeating-linear-gradient( -45deg,
-        #ffe77b,
-        #f3d982 2px,
-        #fff098 2px,
-        #f8e16b 4px);
-    }
-
-    #flash {
-        text-align: center;
-    }
-</style>
 
 <body>
     <div class="container">
@@ -29,41 +21,46 @@
         {% endfor %}
         <br>
         <div class="row">
-            <div class="col-md-1"></div>
-            <div class="col-md-5 panel panel-info">
-                <h2>Register</h2>
+            <div class="col-md-3"></div>
+            <div class="col-md-6 panel panel-info registration box">
+                <h2>Register</h2><br>
                 <form action="add_user" method="post">
-                    {% csrf_token %} Name:
+                    {% csrf_token %} 
+                    <label>Name:</label>
                     <input type="text" name="name">
-                    <br> Alias:
+                    <br><br> <label>Alias:</label>
                     <input type="text" name="alias">
-                    <br> Email:
+                    <br><br> <label>Email:</label>
                     <input type="text" name="email">
-                    <br> Password:
+                    <br><br> <label>Password:</label>
                     <input type="password" name="password">
                     <br>
                     <p>Password must be at least 8 characters long.</p>
-                    Confirm Password:
+                    <label>Confirm Password:</label>
                     <input type="password" name="confirm_password">
-                    <br>
+                    <br><br>
                     <input type="submit" value="Register">
                 </form>
                 <br>
+                <p>Back to <span id="login">login</span></p>
             </div>
-            <div class="col-md-1"></div>
-            <div class="col-md-5 panel panel-success">
-                <h2>Login</h2>
+
+            <div class="col-md-6 panel panel-success login box center-block">
+                <h2>Login</h2><br>
                 <form action="login" method="post">
-                    {% csrf_token %} Email:
+                    {% csrf_token %} 
+                    <label>Email:</label>
                     <input type="text" name="email">
-                    <br> Password:
+                    <br><br> <label>Password:</label>
                     <input type="password" name="password">
-                    <br>
+                    <br><br>
                     <input type="submit" value="Login">
                 </form>
                 <br>
+                <p>Don't have an account? Register <span id="register">Here</span></p>
             </div>
         </div>
+        <br>
         <p style="text-align: center">A simple project build by Jimmy Chen using Python and Django with SQLite</p>
     </div>
 </body>
