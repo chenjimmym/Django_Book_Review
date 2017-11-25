@@ -1,0 +1,29 @@
+body {
+    background: url("/static/books.jpg");
+    background-position: center;
+    font-family: Courier, Courier New, monospace;
+}
+
+#logged_in_as {
+    color: white;
+    font-size: 15px;
+}
+
+#welcome {
+    color: white;
+    font-size: 28px;
+}
+
+#add_logout {
+    text-align: right;
+}
+
+.add_and_logout {
+    color: black;
+    font-size: 28px;
+    background-color: rgba(255, 255, 255, 0.425);
+}
+
+.box {
+    background-color: rgba(185, 180, 167, 0.527);
+}

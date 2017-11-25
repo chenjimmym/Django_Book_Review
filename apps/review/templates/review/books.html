@@ -6,36 +6,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+    {% load static %}
+    <link rel="stylesheet" href="{% static "books.css" %}">
+    <script type="text/javascript" src="{% static "books.js" %}"></script>
 </head>
-<style>
-    body {
-        background: repeating-linear-gradient( -45deg,
-        #ffe77b,
-        #f3d982 2px,
-        #fff098 2px,
-        #f8e16b 4px);
-    }
-</style>
 
 <body>
     <div class="container">
         <div class="row">
             <div class="col-md-6">
-                <p>Logged in as: {{request.session.login_status.name}}</p>
-                <h2>Welcome</h2>
+                <p id="logged_in_as">Logged in as: {{request.session.login_status.name}} <a href="logout">Logout</a></p>
+                <h2 id="welcome">Welcome</h2>
             </div>
-            <div class="col-md-6">
+            <div class="col-md-6" id="add_logout">
                 <br>
                 <br>
-                <a href="add">Add Book and Review</a>
-                <a href="logout">Logout</a>
+                <a class="add_and_logout"  href="add">Add Book Review</a>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 panel box">
                 <br>
                 <h3>Recent Book Reviews:</h3>
-                <br> {% for review in recent_reviews %}
+                <br> 
+                {% for review in recent_reviews %}
                 <a href="/book/{{review.belong_to.id}}">
                     <h4>{{review.belong_to.title}}</h4>
                 </a>
@@ -43,10 +38,11 @@
                 <p>
                     <a href="/user/{{review.reviewed_by.id}}">{{review.reviewed_by.name}}</a> says: {{review.message}}</p>
                 <p>Posted on: {{review.updated_at}}</p>
-                <br> {% endfor %}
-
+                <br> 
+                {% endfor %}
             </div>
-            <div class="col-md-6">
+            <div class="col-md-1"></div>
+            <div class="col-md-5 panel box">
                 <br>
                 <h3>Other Books with Reviews:</h3>
                 {% for book in all_books %}
