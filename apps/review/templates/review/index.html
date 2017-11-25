@@ -6,62 +6,79 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    
-    {% load static %}
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> {% load static %}
     <link rel="stylesheet" href="{% static "index.css" %}">
     <script type="text/javascript" src="{% static "index.js" %}"></script>
 </head>
 
+
 <body>
     <div class="container">
-        <h1 style="text-align: center">Welcome to the book review!</h1>
+        <!-- <h1 style="text-align: center">Welcome to the book review!</h1> -->
+        <h1 class="panel" id="main_title"><div id="title_scroll">W</div></h1>
+
         <br> {% for message in messages %}
         <p id="flash">{{ message }}</p>
         {% endfor %}
         <br>
         <div class="row">
             <div class="col-md-3"></div>
-            <div class="col-md-6 panel panel-info registration box">
-                <h2>Register</h2><br>
+            <div class="col-md-6 panel registration box">
+                <h2>Register</h2>
+                <br>
                 <form action="add_user" method="post">
-                    {% csrf_token %} 
+                    {% csrf_token %}
                     <label>Name:</label>
                     <input type="text" name="name">
-                    <br><br> <label>Alias:</label>
+                    <br>
+                    <br>
+                    <label>Alias:</label>
                     <input type="text" name="alias">
-                    <br><br> <label>Email:</label>
+                    <br>
+                    <br>
+                    <label>Email:</label>
                     <input type="text" name="email">
-                    <br><br> <label>Password:</label>
+                    <br>
+                    <br>
+                    <label>Password:</label>
                     <input type="password" name="password">
                     <br>
                     <p>Password must be at least 8 characters long.</p>
                     <label>Confirm Password:</label>
                     <input type="password" name="confirm_password">
-                    <br><br>
-                    <input type="submit" value="Register">
+                    <br>
+                    <br>
+                    <input type="submit" value="Register" id="button">
                 </form>
                 <br>
-                <p>Back to <span id="login">login</span></p>
+                <p>Back to
+                    <span id="login">Login</span>
+                </p>
             </div>
 
-            <div class="col-md-6 panel panel-success login box center-block">
-                <h2>Login</h2><br>
+            <div class="col-md-6 panel login box">
+                <h2>Login</h2>
+                <br>
                 <form action="login" method="post">
-                    {% csrf_token %} 
+                    {% csrf_token %}
                     <label>Email:</label>
                     <input type="text" name="email">
-                    <br><br> <label>Password:</label>
+                    <br>
+                    <br>
+                    <label>Password:</label>
                     <input type="password" name="password">
-                    <br><br>
-                    <input type="submit" value="Login">
+                    <br>
+                    <br>
+                    <input type="submit" value="Login" id="button">
                 </form>
                 <br>
-                <p>Don't have an account? Register <span id="register">Here</span></p>
+                <p>Don't have an account? Register
+                    <span id="register">Here</span>
+                </p>
             </div>
         </div>
         <br>
-        <p style="text-align: center">A simple project build by Jimmy Chen using Python and Django with SQLite</p>
+        <p class="panel" id="footer">A simple project build by Jimmy Chen using Python and Django with SQLite</p>
     </div>
 </body>
 

@@ -1,22 +1,35 @@
 body {
-    background: repeating-linear-gradient( -45deg,
-    #ffe77b,
-    #f3d982 2px,
-    #fff098 2px,
-    #f8e16b 4px);
+    background: url("/static/index_background.jpg");
+    background-position: center;
+    font-family: Courier, Courier New, monospace;
+}
+
+#main_title{
+    color: rgb(0, 0, 0);
+    text-align: center;
+    background-color: rgba(238, 226, 201, 0.295);
+}
+
+#footer{
+    text-align: center;
+    background-color: rgba(255, 255, 255, 0.192);
+    display: none;
 }
 
 #flash {
     text-align: center;
 }
 
+.login {
+    display: none;
+    text-align: center;
+    background-color: rgba(105, 102, 94, 0.418);
+}
+
 .registration {
     display: none;
     text-align: center;
-}
-
-.login {
-    text-align: center;
+    background-color: rgba(105, 102, 94, 0.418);
 }
 
 #login, #register {
@@ -27,4 +40,9 @@ body {
 label{
     display:inline-block;
     width:100px;
+}
+
+#button {
+    border-radius: 5px;
+    background-color: rgba(255, 247, 228, 0.849);
 }
