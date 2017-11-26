@@ -1,0 +1,26 @@
+body {
+    background: url("/static/add_book.jpg");
+    background-position: center;
+    font-family: Courier, Courier New, monospace;
+}
+
+#top_bar{
+    width: 200px;
+    text-align: center;
+    font-size: 28px;
+    background-color: rgba(255, 247, 238, 0.514);
+}
+
+#main {
+    text-align: center;
+    background-color: rgba(255, 247, 238, 0.514);
+}
+
+label{
+    display:inline-block;
+    width:120px;
+}
+
+#btn {
+    border-radius: 5px;
+}

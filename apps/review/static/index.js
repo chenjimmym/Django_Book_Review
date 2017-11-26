@@ -5,6 +5,18 @@ $(document).ready(function () {
             $("#footer").slideDown();
         });
 
+        $("#register").hover(function () {
+            $("#register").css("color", "white");
+        }, function(){
+            $("#register").css("color", "rgb(0, 0, 170)");
+        })
+
+        $("#login").hover(function () {
+            $("#login").css("color", "white");
+        }, function(){
+            $("#login").css("color", "rgb(0, 0, 170)");
+        })
+
         $("#register").click(function () {
             // alert("clicked");
             $(".login").fadeOut(function () {

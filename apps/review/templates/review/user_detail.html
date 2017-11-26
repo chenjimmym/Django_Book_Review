@@ -6,37 +6,37 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+    {% load static %}
+    <link rel="stylesheet" href="{% static "userdetail.css" %}">
+    <script type="text/javascript" src="{% static "userdetail.js" %}"></script>
 </head>
-<style>
-    body {
-        background: repeating-linear-gradient( -45deg,
-        #ffe77b,
-        #f3d982 2px,
-        #fff098 2px,
-        #f8e16b 4px);
-    }
-</style>
+
 <body>
     <div class="container">
         <div class="row">
             <div class="col-md-5">
-                <p>Logged in as: {{request.session.login_status.name}}</p>
+                <p id="logged_in_as">Logged in as: {{request.session.login_status.name}} <a href="/logout">Logout</a></p>
             </div>
-            <div class="col-md-2">
-                <a href="/books">Home</a>
-                <a href="/logout">Logout</a>
+            <div class="col-md-5" id="home_button_box">
+                <a class="panel" href="/books" id="home_button">Home</a>
             </div>
         </div>
         <div class="row">
+            <div class="panel col-md-4 box">
             <h3>User Alias: {{user_info.alias}}</h3>
-            <p>Name: {{user_info.name}}</p>
-            <p>Email: {{user_info.email}}</p>
-            <p>Total reviews: {{review_count}}</p>
+            <h3>Name: {{user_info.name}}</h3>
+            <h3>Email: {{user_info.email}}</h3>
+            <h3>Total reviews: {{review_count}}</h3>
             <br>
+            </div>
+            <div class="col-md-1"></div>
+            <div class="panel col-md-5 box">
             <h4>Posted reviews on the following books:</h4>
             {% for review in user_reviews %}
                 <a href="/book/{{review.belong_to.id}}"><p>{{ review.belong_to.title }}</p></a>
             {% endfor %}
+            </div>
         </div>
     </div>
 </body>

@@ -27,3 +27,11 @@ body {
 .box {
     background-color: rgba(185, 180, 167, 0.527);
 }
+
+#rating, #time_stamp {
+    font-style: italic;
+}
+
+#review {
+    font-size: 18px;
+}

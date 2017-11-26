@@ -32,12 +32,12 @@
                 <br> 
                 {% for review in recent_reviews %}
                 <a href="/book/{{review.belong_to.id}}">
-                    <h4>{{review.belong_to.title}}</h4>
+                    <h3>{{review.belong_to.title}}</h3>
                 </a>
-                <p>Rating: {{review.rating}}</p>
-                <p>
+                <p id="rating">Rating: {{review.rating}}</p>
+                <p id="review">
                     <a href="/user/{{review.reviewed_by.id}}">{{review.reviewed_by.name}}</a> says: {{review.message}}</p>
-                <p>Posted on: {{review.updated_at}}</p>
+                <p id="time_stamp">Posted on: {{review.updated_at}}</p>
                 <br> 
                 {% endfor %}
             </div>

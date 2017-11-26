@@ -6,41 +6,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+    {% load static %}
+    <link rel="stylesheet" href="{% static "add_book.css" %}">
+    <script type="text/javascript" src="{% static "add_book.js" %}"></script>
 </head>
-<style>
-    body {
-        background: repeating-linear-gradient( -45deg,
-        #ffe77b,
-        #f3d982 2px,
-        #fff098 2px,
-        #f8e16b 4px);
-    }
-</style>
+
 <body>
     <div class="container">
-        <div style="text-align: right">
+        <div class="panel" id="top_bar">
             <a href="/books">Home</a>
             <a href="logout">Logout</a>
         </div>
-
+        <div class="col-md-2"></div>
+        <div class="panel col-md-8" id="main">
         <h2>Add a New Book Title and a Review:</h2>
         <form action="add_book" method="post">
             {% csrf_token %}
-            Book Title:
+            <label>Book Title:</label>
             <input type="text" name="book_title"><br>
-            {% comment %} <br><br><p>Author:</p>
-            Choose from the list:
-            <select name="author">
-                <option value="volvo">Volvo</option>
-                <option value="saab">Saab</option>
-                <option value="mercedes">Mercedes</option>
-                <option value="audi">Audi</option>
-            </select> {% endcomment %}
-            <br>Add a new author:
+            <br>
+            <label>Author:</label>
             <input type="text" name="author"> 
-            <br><br>Review:
+            <br><br>
+            <label>Review:</label>
             <textarea name="review"></textarea> 
-            <br><br>Rating:
+            <br><br>
+            <label>Rating:</label>
             <select name="rating">
                 <option value="1">1</option>
                 <option value="2">2</option>
@@ -49,8 +41,10 @@
                 <option value="5">5</option>
             </select>
             stars.
-            <br><br><input type="submit" value="Add Book and Review">
+            <br><br><input type="submit" value="Add Book and Review" id="btn">
+            <p>-</p>
         </form>
+        </div>
     </div>
 </body>
 

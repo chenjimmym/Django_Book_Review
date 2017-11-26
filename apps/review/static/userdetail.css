@@ -1,0 +1,24 @@
+body {
+    background: url("/static/userdetail.jpg");
+    background-position: center;
+    font-family: Courier, Courier New, monospace;
+}
+
+#logged_in_as {
+    color: white;
+    font-size: 15px;
+}
+
+#home_button{
+    color: rgb(0, 0, 0);
+    font-size: 28px;
+    background-color: rgba(255, 247, 228, 0.425);
+}
+
+#home_button_box {
+    text-align: right;
+}
+
+.box {
+    background-color: rgba(255, 251, 242, 0.411);
+}
