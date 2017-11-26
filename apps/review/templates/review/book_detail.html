@@ -6,53 +6,49 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script> 
+    {% load static %}
+    <link rel="stylesheet" href="{% static "bookdetail.css" %}">
+    <script type="text/javascript" src="{% static "bookdetail.js" %}"></script>
 </head>
-<style>
-    body {
-        background: repeating-linear-gradient( -45deg,
-        #ffe77b,
-        #f3d982 2px,
-        #fff098 2px,
-        #f8e16b 4px);
-    }
-</style>
 
 <body>
     <div class="container">
         <div class="row">
-            <div class="col-md-6">
-                <p>Logged in as: {{request.session.login_status.name}}</p>
+            <div class="col-md-5 panel" id="logged">
+                <p id="logged-text">Logged in as: {{request.session.login_status.name}} | <a href="/logout">Logout</a></p>
             </div>
-            <div class="col-md-6">
-                <a href="/books">Home</a>
-                <a href="/logout">Logout</a>
+            <div class="col-md-6"></div>
+            <div class="col-md-1 panel" id="home_box">
+                <a href="/books" id="home_btn">Home</a>
             </div>
         </div>
         <div class="row">
-            <div class="col-md-6">
+            <div class="col-md-6 panel box">
                 <h2>{{title}}</h2>
                 <h3>Author: {{author}}</h3>
                 <br>
                 <h3>Reviews</h3>
                 {% for data in reviews %}
-                <p>Rating: {{data.rating}}</p>
-                <p><a href="/user/{{data.reviewed_by.id}}">{{data.reviewed_by.name}}</a> says: {{data.message}}</p>
-                <p>Posted on {{data.created_at}}</p>
+                <p id="rating">Rating: {{data.rating}}</p>
+                <p id="review"><a href="/user/{{data.reviewed_by.id}}">{{data.reviewed_by.name}}</a> says: {{data.message}}</p>
+                <p id="time_stamp">Posted on {{data.created_at}}</p>
                 {% if data.reviewed_by.id == request.session.login_status.id %}
                 <form action="/delete_review" method="post">
                     {% csrf_token %}
                     <input type="hidden" name="review_id" value="{{data.id}}">
                     <input type="hidden" name="book_id" value="{{book_id}}">
-                    <input type="submit" value="Delete this Review">
+                    <input type="submit" value="Delete this Review" id="btn">
                 </form>
                 {% endif %}
                 <br> {% endfor %}
             </div>
-            <div class="col-md-6">
+            <div class="col-md-1"></div>
+            <div class="col-md-5 panel box">
                 <h3>Add a Review:</h3>
                 <form action="/add_review" method="post">
                     {% csrf_token %}
-                    <textarea name="message"></textarea>
+                    <textarea name="message" rows="6" cols="50"></textarea>
                     <br>
                     <br>Rating:
                     <select name="rating">
@@ -66,8 +62,8 @@
                     <input type="hidden" name="book_id" value="{{book_id}}">
                     <br>
                     <br>
-                    <input type="submit" value="Submit Review">
-                </form>
+                    <input type="submit" value="Submit Review" id="btn">
+                </form><br>
             </div>
         </div>
     </div>

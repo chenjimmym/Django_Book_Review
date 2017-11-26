@@ -1,0 +1,40 @@
+body {
+    background: url("/static/bookdetail.jpg");
+    background-position: center;
+    font-family: Courier, Courier New, monospace;
+}
+
+#rating, #time_stamp {
+    font-style: italic;
+}
+
+#review {
+    font-size: 18px;
+}
+
+#btn {
+    border-radius: 5px;
+}
+
+.box{
+    background-color: rgba(255, 246, 235, 0.575);
+}
+
+#logged {
+    width: 325px;
+    background-color: rgba(255, 246, 235, 0.575);
+}
+
+#logged-text {
+    font-size: 18px;
+}
+
+#home_box{
+    background-color: rgba(255, 246, 235, 0.575);
+    width: 120px;
+    text-align: center;
+}
+
+#home_btn{
+    font-size: 28px;
+}
