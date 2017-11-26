@@ -15,6 +15,10 @@ def add_user(request):
                 messages.error(request, error)
             return redirect('/')
         else:
+            user_exist = User.objects.filter(email=request.POST['email'])
+            if user_exist:
+                messages.error(request, "Email is already in use!")
+                return redirect('/')
             password = request.POST['password']
             hashed_password = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
             User.objects.create(name=request.POST['name'], alias=request.POST['alias'], email=request.POST['email'], password=hashed_password)
@@ -26,6 +30,9 @@ def login(request):
         if not 'login_status' in request.session:
             request.session['login_status'] = False
         login_data = User.objects.filter(email=request.POST['email'])
+        if not login_data:
+            messages.error(request, "Email and password does not match")
+            return redirect('/')
         inputted_password = request.POST['password']
         stored_password = User.objects.filter(email=request.POST['email']).first().password
         if login_data and bcrypt.checkpw(inputted_password.encode(), stored_password.encode()):
