@@ -2,7 +2,6 @@ from django.shortcuts import render, redirect, HttpResponse
 from models import *
 from django.contrib import messages
 import bcrypt
-# Create your views here.
 def index(request):
     # User.objects.all().delete()
     return render(request, 'review/index.html')
