@@ -14,13 +14,13 @@ def add_user(request):
                 messages.error(request, error)
             return redirect('/')
         else:
-            user_exist = User.objects.filter(email=request.POST['email'])
+            user_exist = User.objects.filter(email=request.POST['email'].lower())
             if user_exist:
                 messages.error(request, "Email is already in use!")
                 return redirect('/')
             password = request.POST['password']
             hashed_password = bcrypt.hashpw(password.encode(), bcrypt.gensalt())
-            User.objects.create(name=request.POST['name'], alias=request.POST['alias'], email=request.POST['email'], password=hashed_password)
+            User.objects.create(name=request.POST['name'], alias=request.POST['alias'], email=request.POST['email'].lower(), password=hashed_password)
             messages.error(request, "Successfully Registered")
             return redirect('/')
 
@@ -28,12 +28,12 @@ def login(request):
     if request.method == 'POST':
         if not 'login_status' in request.session:
             request.session['login_status'] = False
-        login_data = User.objects.filter(email=request.POST['email'])
+        login_data = User.objects.filter(email=request.POST['email'].lower())
         if not login_data:
             messages.error(request, "Email and password does not match")
             return redirect('/')
         inputted_password = request.POST['password']
-        stored_password = User.objects.filter(email=request.POST['email']).first().password
+        stored_password = User.objects.filter(email=request.POST['email'].lower()).first().password
         if login_data and bcrypt.checkpw(inputted_password.encode(), stored_password.encode()):
             request.session['login_status'] = {'id':login_data.first().id, 'name':login_data.first().name, 'alias':login_data.first().alias, 'email':login_data.first().email}
             return redirect('/books')
